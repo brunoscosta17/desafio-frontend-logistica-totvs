@@ -1,1 +1,42 @@
-<p>dashboard works!</p>
+<div class="panels">
+
+  <mat-toolbar color="primary">
+    <span>Dashboard</span>
+  </mat-toolbar>
+
+  <mat-accordion>
+
+    <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+
+      <mat-expansion-panel-header>
+        <mat-panel-title>Andamento de entregas de cada motorista</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <app-table [displayedColumns]="displayedColumnsDeliveryProgressEachDriver" [dataSource]="dataSourceDeliveryProgressEachDriver"></app-table>
+
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+
+      <mat-expansion-panel-header>
+        <mat-panel-title>Quantidade de entregas que tiveram insucesso</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <app-table [displayedColumns]="displayedColumnsNumberDeliveries" [dataSource]="dataSourceNumberDeliveries"></app-table>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+
+      <mat-expansion-panel-header>
+        <mat-panel-title>Andamento de entregas por bairro</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <app-table [displayedColumns]="displayedColumnsDeliveryProgressByNeighborhood" [dataSource]="dataSourceDeliveryProgressByNeighborhood"></app-table>
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+</div>
