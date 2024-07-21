@@ -5,15 +5,19 @@ import { Delivery } from '../../models/Delivery.interface';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { DeliveryService } from '../../services/delivery.service';
+import { CommonModule } from '@angular/common';
+import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 
 @Component({
   selector: 'app-list-deliveries',
   standalone: true,
   imports: [
+    CommonModule,
     MatToolbarModule,
     MatTableModule,
     MatPaginatorModule,
-    MatInputModule
+    MatInputModule,
+    MatSortModule
   ],
   templateUrl: './list-deliveries.component.html',
   styleUrls: ['./list-deliveries.component.scss']
@@ -24,6 +28,7 @@ export class ListDeliveriesComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Delivery>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   private filterValues: any = {
     motorista: '',
@@ -41,6 +46,7 @@ export class ListDeliveriesComponent implements OnInit, AfterViewInit {
     if (this.paginator) {
       this.dataSource.paginator = this.paginator;
     }
+    this.dataSource.sort = this.sort;
   }
 
   getDeliveriesList(): void {
@@ -60,4 +66,18 @@ export class ListDeliveriesComponent implements OnInit, AfterViewInit {
           && data.status_entrega.toLowerCase().includes(searchTerms.status_entrega);
     };
   }
+
+  getStatusClass(status: string): string {
+    switch (status.toLowerCase()) {
+      case 'pendente':
+        return 'status-pendente';
+      case 'insucesso':
+        return 'status-insucesso';
+      case 'entregue':
+        return 'status-concluido';
+      default:
+        return '';
+    }
+  }
+
 }
