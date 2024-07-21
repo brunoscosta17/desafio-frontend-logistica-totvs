@@ -4,16 +4,26 @@
     <span>Lista de entregas</span>
   </mat-toolbar>
 
+  <div class="filter-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Filtrar por motorista</mat-label>
+      <input matInput (keyup)="applyFilter($event, 'motorista')" placeholder="Nome do motorista">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Filtrar por status</mat-label>
+      <input matInput (keyup)="applyFilter($event, 'status_entrega')" placeholder="Status da entrega">
+    </mat-form-field>
+  </div>
+
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
 
-      <!-- Position Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> No. </th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
       </ng-container>
 
-      <!-- Name Column -->
       <ng-container matColumnDef="nome">
         <th mat-header-cell *matHeaderCellDef> Nome do motorista </th>
         <td mat-cell *matCellDef="let element"> {{element.motorista.nome}} </td>
@@ -48,6 +58,7 @@
       aria-label="Selecione a quantidade de linhas por página">
       showFirstLastButtons>
     </mat-paginator>
+
   </div>
 
 
