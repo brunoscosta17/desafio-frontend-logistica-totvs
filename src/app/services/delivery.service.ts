@@ -8,21 +8,12 @@ import { Delivery } from '../models/Delivery.interface';
 })
 export class DeliveryService {
 
-  private apiUrl = 'api/entregas';
+  private readonly dataUrl = 'assets/data/deliveries.json';
 
-  // constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  // getDeliveries(): Observable<Delivery[]> {
-  //   return this.http.get<Delivery[]>(this.apiUrl).pipe(
-  //     catchError(this.handleError<Delivery[]>('getEntregas', []))
-  //   );
-  // }
-
-  // private handleError<T>(operation = 'operation', result?: T) {
-  //   return (error: any): Observable<T> => {
-  //     console.error(error);
-  //     return of(result as T);
-  //   };
-  // }
+  getDeliveries(): Observable<Delivery[]> {
+    return this.http.get<Delivery[]>(this.dataUrl) as Observable<Delivery[]>;
+  }
 
 }
