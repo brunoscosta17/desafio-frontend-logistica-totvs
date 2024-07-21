@@ -50,13 +50,17 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDeliveriesList();
-    this.dataSourceDeliveryProgressEachDriver = this.getDeliveryProgressEachDriver();
-    this.dataSourceNumberDeliveries = this.getNumberDeliveries();
-    this.dataSourceDeliveryProgressByNeighborhood = this.getDeliveryProgressByNeighborhood();
   }
 
   getDeliveriesList(): void {
-    this.deliveryService.getDeliveries().subscribe(deliveries => this.deliveries = deliveries);
+    this.deliveryService
+      .getDeliveries()
+      .subscribe(deliveries => {
+        this.deliveries = deliveries;
+        this.dataSourceDeliveryProgressEachDriver = this.getDeliveryProgressEachDriver();
+        this.dataSourceNumberDeliveries = this.getNumberDeliveries();
+        this.dataSourceDeliveryProgressByNeighborhood = this.getDeliveryProgressByNeighborhood();
+    });
   }
 
   getDeliveryProgressEachDriver(): DeliveryProgressEachDriver[] {

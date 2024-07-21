@@ -35,7 +35,7 @@ export class ListDeliveriesComponent implements OnInit, AfterViewInit {
   }
 
   getDeliveriesList(): void {
-    this.deliveryService.getDeliveries().subscribe(deliveries => {console.log(deliveries); this.dataSource.data = deliveries});
+    this.deliveryService.getDeliveries().subscribe(deliveries => this.dataSource.data = deliveries);
   }
 
 }
