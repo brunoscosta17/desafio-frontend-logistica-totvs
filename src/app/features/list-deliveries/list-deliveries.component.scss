@@ -9,3 +9,13 @@
 .status-concluido {
   color: green;
 }
+
+.filter-container {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+}
+
+mat-toolbar {
+  padding: 0 !important;
+}
