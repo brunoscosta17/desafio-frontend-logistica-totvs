@@ -58,7 +58,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(deliveries => {
         this.deliveries = deliveries;
         this.dataSourceDeliveryProgressEachDriver = this.getDeliveryProgressEachDriver();
-        console.log(this.dataSourceDeliveryProgressEachDriver)
         this.dataSourceNumberDeliveries = this.getNumberDeliveries();
         this.dataSourceDeliveryProgressByNeighborhood = this.getDeliveryProgressByNeighborhood();
     });
